@@ -29,7 +29,51 @@ namespace CodeFirst_EF.Utils
             }
         }
 
-        
-        
+        public void InsertDocuments()
+        {
+            using (IndexedContext context = new IndexedContext())
+            {
+                context.Documents.AddRange(Documents);
+                context.SaveChanges();
+            }
+        }
+
+        public void InsertToDB()
+        {
+            Dictionary<string, Word> seenWords = new Dictionary<string, Word>();
+            List<Match> matches = new List<Match>();
+            foreach (var document in Documents)
+            {
+                var indexInDoc = 0;
+                foreach (var word in Splitter.Split(document.Text))
+                {
+                    Match match = new Match() { Document = document, IndexInDoc = indexInDoc };
+                    if (word == "")
+                    {
+                        indexInDoc += 1;
+                        continue;
+                    }
+                    if (seenWords.ContainsKey(word))
+                    {
+                        match.Word = seenWords[word];
+                    }
+                    else
+                    {
+                        Word str = new Word() { Str = word };
+                        seenWords.Add(word, str);
+                        match.Word = str;
+                    }
+                    indexInDoc += 1;
+                    matches.Add(match);
+                }
+            }
+            using (IndexedContext context = new IndexedContext())
+            {
+                context.Matches.AddRange(matches);
+                context.SaveChanges();
+            }
+
+        }
+
     }
 }

@@ -17,12 +17,8 @@ namespace CodeFirst_EF
 
         static void Main(string[] args)
         {
-
             CsvToDB csvToDB = new CsvToDB(Path);
-            using (IndexedContext context = new IndexedContext())
-            {
-
-            }
+            csvToDB.InsertToDB();
         }
 
 
