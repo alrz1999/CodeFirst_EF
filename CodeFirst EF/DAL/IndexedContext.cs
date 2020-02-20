@@ -15,8 +15,6 @@ namespace CodeFirst_EF
         public DbSet<Word> Words { get; set; }
         public DbSet<Match> Matches { get; set; }
         
-
-
     }
 
 

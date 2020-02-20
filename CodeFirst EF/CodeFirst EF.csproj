@@ -56,6 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\IndexedContext.cs" />
+    <Compile Include="Migrations\202002201348557_Initial.cs" />
+    <Compile Include="Migrations\202002201348557_Initial.designer.cs">
+      <DependentUpon>202002201348557_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Word.cs" />
@@ -66,7 +71,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002201348557_Initial.resx">
+      <DependentUpon>202002201348557_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
