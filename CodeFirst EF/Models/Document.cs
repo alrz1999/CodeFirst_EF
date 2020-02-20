@@ -10,5 +10,7 @@ namespace CodeFirst_EF.Models
         public string Title { get; set; }
 
         public string Text { get; set; }
+
+       
     }
 }
