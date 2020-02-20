@@ -1,13 +1,4 @@
-﻿using CodeFirst_EF.Models;
-using CodeFirst_EF.Utils;
-using CsvHelper;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CodeFirst_EF.Utils;
 
 namespace CodeFirst_EF
 {

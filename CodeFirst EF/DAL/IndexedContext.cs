@@ -1,10 +1,8 @@
+using CodeFirst_EF.Models;
+using System.Data.Entity;
+
 namespace CodeFirst_EF
 {
-    using CodeFirst_EF.Models;
-    using System;
-    using System.Data.Entity;
-    using System.Linq;
-
     public class IndexedContext : DbContext
     {
         public IndexedContext() : base("name=IndexedContext")

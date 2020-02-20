@@ -1,10 +1,7 @@
-﻿namespace CodeFirst_EF.Migrations
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
+﻿using System.Data.Entity.Migrations;
 
+namespace CodeFirst_EF.Migrations
+{
     internal sealed class Configuration : DbMigrationsConfiguration<CodeFirst_EF.IndexedContext>
     {
         public Configuration()
