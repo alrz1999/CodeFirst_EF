@@ -19,9 +19,6 @@ namespace CodeFirst_EF
         {
             CsvToDB csvToDB = new CsvToDB(Path);
             csvToDB.InsertToDB();
-        }
-
-
-        
+        }   
     }
 }

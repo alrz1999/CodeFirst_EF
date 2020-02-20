@@ -12,7 +12,7 @@ namespace CodeFirst_EF.Utils
 {
     public class CsvToDB
     {
-        public IEnumerable<Document> Documents;
+        private IEnumerable<Document> Documents;
 
         public CsvToDB(string path)
         {
