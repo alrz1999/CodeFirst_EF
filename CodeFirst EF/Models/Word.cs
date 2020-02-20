@@ -14,7 +14,7 @@ namespace CodeFirst_EF.Models
 
         public string Str { get; set; }
 
-        public ICollection<Match> matches { get; set; }
+        public ICollection<Match> Matches { get; set; }
 
 
     }

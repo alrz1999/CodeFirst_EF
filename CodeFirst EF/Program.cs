@@ -19,8 +19,6 @@ namespace CodeFirst_EF
         {
 
             CsvToDB csvToDB = new CsvToDB(Path);
-            csvToDB.InsertDocuments();
-
             using (IndexedContext context = new IndexedContext())
             {
 

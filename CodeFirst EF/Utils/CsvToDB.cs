@@ -12,7 +12,8 @@ namespace CodeFirst_EF.Utils
 {
     public class CsvToDB
     {
-        private IEnumerable<Document> Documents;
+        public IEnumerable<Document> Documents;
+
         public CsvToDB(string path)
         {
             this.Documents = ReadCsv(path);
@@ -28,13 +29,7 @@ namespace CodeFirst_EF.Utils
             }
         }
 
-        public void InsertDocuments()
-        {
-            using (IndexedContext context = new IndexedContext())
-            {
-                context.Documents.AddRange(Documents);
-                context.SaveChanges();
-            }
-        }
+        
+        
     }
 }
