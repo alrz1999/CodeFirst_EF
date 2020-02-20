@@ -10,6 +10,11 @@ namespace CodeFirst_EF
     {
         static void Main(string[] args)
         {
+
+            using (IndexedContext context = new IndexedContext())
+            {
+             
+            }
         }
     }
 }
