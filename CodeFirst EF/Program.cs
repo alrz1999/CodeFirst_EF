@@ -1,4 +1,5 @@
 ﻿using CodeFirst_EF.Models;
+using CodeFirst_EF.Utils;
 using CsvHelper;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,9 @@ namespace CodeFirst_EF
 
         static void Main(string[] args)
         {
-            var records = ReadCsvFile();
+
+            CsvToDB csvToDB = new CsvToDB(Path);
+            csvToDB.InsertDocuments();
 
             using (IndexedContext context = new IndexedContext())
             {
@@ -25,16 +28,6 @@ namespace CodeFirst_EF
         }
 
 
-        private static IEnumerable<Document> ReadCsvFile()
-        {
-            using (var reader = new StreamReader(Path))
-            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
-            {
-                csv.Configuration.RegisterClassMap<DocumentMap>();
-                var records = csv.GetRecords<Document>();
-                return records;
-            }
-            
-        }
+        
     }
 }
