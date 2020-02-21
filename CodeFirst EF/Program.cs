@@ -1,4 +1,5 @@
-﻿using CodeFirst_EF.Utils;
+﻿using CodeFirst_EF.SearchEng;
+using CodeFirst_EF.Utils;
 
 namespace CodeFirst_EF
 {
@@ -8,8 +9,12 @@ namespace CodeFirst_EF
 
         static void Main(string[] args)
         {
-            CsvToDB csvToDB = new CsvToDB(Path);
-            csvToDB.InsertToDB();
+            //CsvToDB csvToDB = new CsvToDB(Path);
+            //csvToDB.InsertToDB();
+            Processor processor = new Processor();
+            IPrinter printer = new Printer();
+            SearchEngine searchEngine = new SearchEngine(processor,printer);
+            searchEngine.Query();
         }   
     }
 }
