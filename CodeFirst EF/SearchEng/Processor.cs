@@ -12,7 +12,7 @@ namespace CodeFirst_EF.SearchEng
             List<Result> results;
             string[] queryWords = Splitter.Split(query);
             results = GetResults(queryWords);
-            //results = ProximityFilter(queryWords,results);
+            results = ProximityFilter(queryWords, results);
             results = GetSortedResults(results);
             return results;
         }
@@ -23,26 +23,24 @@ namespace CodeFirst_EF.SearchEng
             {
                 foreach (var result in results)
                 {
-                    var finalScore = 0;
                     for (int i = 0; i < queryWords.Length-1; i++)
                     {
-                        finalScore = CalculateFinalScore(context, result, finalScore, queryWords[i],queryWords[i+1]);
+                         UpdateScore(context, result, queryWords[i],queryWords[i+1]);
                     }
                 }
             }
             return results;
         }
 
-        private int CalculateFinalScore(IndexedContext context, Result result, int finalScore, string firstWord, string secondWord)
+        private void UpdateScore(IndexedContext context, Result result, string firstWord, string secondWord)
         {
             var firstIndexes = context.Matches.Where(x => x.Word.Str == firstWord && x.Document.ID == result.Document.ID).Select(x => x.IndexInDoc).ToList();
             var secondIndexes = context.Matches.Where(x => x.Word.Str == secondWord && x.Document.ID == result.Document.ID).Select(x => x.IndexInDoc).ToList();
             if (firstIndexes.Count() == 0 || secondIndexes.Count() == 0)
-                return finalScore;
+                return;
             var firstMean = firstIndexes.Sum() / firstIndexes.Count();
             var secondMean = secondIndexes.Sum() / secondIndexes.Count();
-            finalScore += secondMean - firstMean;
-            return finalScore;
+            result.Score -= Math.Abs(secondMean - firstMean);
         }
 
         private List<Result> GetSortedResults(List<Result> results)
