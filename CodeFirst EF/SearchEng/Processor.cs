@@ -66,7 +66,6 @@ namespace CodeFirst_EF.SearchEng
                             results = wordResults;
                         else
                             SetResultsScore(results, wordResults);
-                        //UpdateResultsScore(results, wordResults);
 
                     }
                 }
@@ -102,18 +101,6 @@ namespace CodeFirst_EF.SearchEng
                
             }
             return temp;
-        }
-
-        private void UpdateResultsScore(List<Result> results, List<Result> wordResults)
-        {
-            foreach (var wordResult in wordResults)
-            {
-                foreach (var result in results)
-                {
-                    if (result.Equals(wordResult))
-                        result.Score += wordResult.Score;
-                }
-            }   
         }
 
         private Dictionary<int,Result> GetWordResults(IndexedContext context, string word)
