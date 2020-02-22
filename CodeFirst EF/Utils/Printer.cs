@@ -15,7 +15,7 @@ namespace CodeFirst_EF.Utils
                 foreach (var result in results)
                 {
                     Console.WriteLine("Results:");
-                    Console.WriteLine($@"{result.Score}     {result.Document.Text}" );
+                    Console.WriteLine($@"{result.Score}          {result.Document.Text}" );
                 }
             }
 

@@ -1,5 +1,8 @@
 ﻿using CodeFirst_EF.SearchEng;
 using CodeFirst_EF.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CodeFirst_EF
 {
@@ -13,8 +16,14 @@ namespace CodeFirst_EF
             //csvToDB.InsertToDB();
             Processor processor = new Processor();
             IPrinter printer = new Printer();
-            SearchEngine searchEngine = new SearchEngine(processor,printer);
+            SearchEngine searchEngine = new SearchEngine(processor, printer);
             searchEngine.Query();
-        }   
+
+        }
+
+        private static object List<T>()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -22,7 +22,7 @@ namespace CodeFirst_EF.SearchEng
         {
             while (true)
             {
-                var query = Console.ReadLine();
+                var query = Console.ReadLine().ToLower();
                 var result  = processor.Process(query);
                 printer.Print(result);
 

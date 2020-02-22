@@ -42,8 +42,9 @@ namespace CodeFirst_EF.Utils
             foreach (var document in Documents)
             {
                 var indexInDoc = 0;
-                foreach (var word in Splitter.Split(document.Text))
+                foreach (var word in Splitter.Split(document.Text.ToLower()))
                 {
+                    
                     Match match = new Match() { Document = document, IndexInDoc = indexInDoc };
                     if (word == "")
                     {
