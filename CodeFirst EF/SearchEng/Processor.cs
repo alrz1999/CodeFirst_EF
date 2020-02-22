@@ -49,7 +49,7 @@ namespace CodeFirst_EF.SearchEng
         {
             if (results == null)
                 return null;
-            return results.OrderByDescending(x => x.Score).ToList();
+            return results.OrderByDescending(x => x.Score * x.VarietyCount) .ToList();
         }
 
         private List<Result> GetResults(string[] queryWords)
@@ -71,6 +71,8 @@ namespace CodeFirst_EF.SearchEng
                     }
                 }
             }
+            if (results == null)
+                return null;
             return results.Values.ToList();
         }
 
@@ -79,9 +81,12 @@ namespace CodeFirst_EF.SearchEng
             foreach (var wordResult in wordResults)
             {
                 if (results.ContainsKey(wordResult.Key))
+                {
                     results[wordResult.Key].Score += wordResult.Value.Score;
+                    results[wordResult.Key].VarietyCount++;
+                }
                 else
-                    results.Add(wordResult.Key,wordResult.Value);
+                    results.Add(wordResult.Key, wordResult.Value);
             }
         }
 

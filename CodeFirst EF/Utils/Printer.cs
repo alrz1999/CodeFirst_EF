@@ -8,13 +8,13 @@ namespace CodeFirst_EF.Utils
     {
         public void Print(List<Result> results)
         {
+            Console.WriteLine("Search Results: \n");
             if (results == null)
                 Console.WriteLine("nothing was found !!!");
             else
             {
                 foreach (var result in results)
                 {
-                    Console.WriteLine("Results:");
                     Console.WriteLine($@"{result.Score}          {result.Document.Text}" );
                 }
             }
@@ -23,6 +23,7 @@ namespace CodeFirst_EF.Utils
 
         public void PrintTop(List<Result> results, int number)
         {
+            Console.WriteLine("Search Results:\n");
             if (results == null)
                 Console.WriteLine("nothing was found !!!");
             else
@@ -30,8 +31,7 @@ namespace CodeFirst_EF.Utils
                 int counter = 1;
                 foreach (var result in results)
                 {
-                    Console.WriteLine("Results:");
-                    Console.WriteLine($@"{result.Score}          {result.Document.Text}");
+                    Console.WriteLine($@"{counter}-  {result.Document.Text}");
                     if (counter == number)
                         return;
                     counter++;
