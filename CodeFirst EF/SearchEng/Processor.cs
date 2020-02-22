@@ -62,13 +62,27 @@ namespace CodeFirst_EF.SearchEng
                     if (context.Words.Any(x => x.Str.ToLower() == word))
                     {
                         var wordResults = GetWordResults(context, word);
-                        results = GetCommonResults(results, wordResults);
+                        if (results == null)
+                            results = wordResults;
+                        else
+                            SetResultsScore(results, wordResults);
                         //UpdateResultsScore(results, wordResults);
 
                     }
                 }
             }
             return results.Values.ToList();
+        }
+
+        private void SetResultsScore(Dictionary<int, Result> results, Dictionary<int, Result> wordResults)
+        {
+            foreach (var wordResult in wordResults)
+            {
+                if (results.ContainsKey(wordResult.Key))
+                    results[wordResult.Key].Score += wordResult.Value.Score;
+                else
+                    results.Add(wordResult.Key,wordResult.Value);
+            }
         }
 
         private Dictionary<int, Result> GetCommonResults(Dictionary<int, Result> results, Dictionary<int,Result> wordResults)
@@ -80,6 +94,7 @@ namespace CodeFirst_EF.SearchEng
             {
                 if (results.ContainsKey(wordResult.Key))
                     temp[wordResult.Key].Score += wordResult.Value.Score;
+               
             }
             return temp;
         }
@@ -103,7 +118,7 @@ namespace CodeFirst_EF.SearchEng
             var docMatches = wordMatches.GroupBy(x => x.Document).Select(x => new { Document = x.Key, Count = x.Count() });
             foreach (var docMatch in docMatches)
             {
-                var result = new Result() { Document = docMatch.Document, Score = docMatch.Count };
+                var result = new Result() { Document = docMatch.Document, Score = docMatch.Count*word.Length };
                 wordResults.Add(result.Document.ID,result);
             }
             return wordResults;

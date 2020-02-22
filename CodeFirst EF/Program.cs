@@ -1,8 +1,5 @@
 ﻿using CodeFirst_EF.SearchEng;
 using CodeFirst_EF.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace CodeFirst_EF
 {
@@ -21,9 +18,6 @@ namespace CodeFirst_EF
 
         }
 
-        private static object List<T>()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

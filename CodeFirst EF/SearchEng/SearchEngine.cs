@@ -1,9 +1,5 @@
 ﻿using CodeFirst_EF.Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeFirst_EF.SearchEng
 {
@@ -25,7 +21,6 @@ namespace CodeFirst_EF.SearchEng
                 var query = Console.ReadLine().ToLower();
                 var result  = processor.Process(query);
                 printer.Print(result);
-
             }
         }
     }
