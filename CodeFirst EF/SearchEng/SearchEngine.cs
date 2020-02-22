@@ -20,7 +20,7 @@ namespace CodeFirst_EF.SearchEng
             {
                 var query = Console.ReadLine().ToLower();
                 var result  = processor.Process(query);
-                printer.Print(result);
+                printer.PrintTop(result,5);
             }
         }
     }

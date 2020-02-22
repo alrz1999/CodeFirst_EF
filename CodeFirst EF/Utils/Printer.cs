@@ -20,5 +20,23 @@ namespace CodeFirst_EF.Utils
             }
 
         }
+
+        public void PrintTop(List<Result> results, int number)
+        {
+            if (results == null)
+                Console.WriteLine("nothing was found !!!");
+            else
+            {
+                int counter = 1;
+                foreach (var result in results)
+                {
+                    Console.WriteLine("Results:");
+                    Console.WriteLine($@"{result.Score}          {result.Document.Text}");
+                    if (counter == number)
+                        return;
+                    counter++;
+                }
+            }
+        }
     }
 }

@@ -10,5 +10,7 @@ namespace CodeFirst_EF.Utils
     interface IPrinter
     {
         void Print(List<Result> results);
+
+        void PrintTop(List<Result> results,int number);
     }
 }
